@@ -1,0 +1,24 @@
+{
+  "portfolio_metrics": {
+    "total_return": 109.91983827477915,
+    "annualized_return": 67.0937107213004,
+    "volatility": 11.925787541823619,
+    "sharpe_ratio": 4.380448902560945,
+    "max_drawdown": -5.187597351374639,
+    "calmar_ratio": 12.933484651333151,
+    "sortino_ratio": 7.960133476852032,
+    "average_turnover": 0.12136422232532304,
+    "win_rate": 60.33057851239669,
+    "num_periods": 364
+  },
+  "benchmark_metrics": {
+    "total_return": 24.854868594945188,
+    "annualized_return": 16.611734915949427,
+    "volatility": 11.02783151642103,
+    "sharpe_ratio": 1.404234459409422,
+    "max_drawdown": -11.009531375661396
+  },
+  "tracking_error": 3.365066133568816,
+  "information_ratio": 10.736207041133799,
+  "excess_return": 50.48197580535097
+}

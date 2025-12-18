@@ -1,0 +1,52 @@
+backtesting:
+  periods_per_year: 252
+  retrain_frequency: 63
+  risk_free_rate: 0.06
+  test_window: 126
+  train_window: 504
+data:
+  end_date: '2024-12-01'
+  local_data_dir: ../nifty_500_5min
+  lookback_window: 20
+  max_stocks: 20
+  start_date: '2020-01-01'
+  train_ratio: 0.7
+  universe: NIFTY50
+  use_local_csv: true
+  use_sample_data: true
+device: cpu
+environment:
+  initial_cash: 1000000.0
+  transaction_cost: 0.001
+  turnover_penalty: 0.0005
+logging:
+  checkpoint_dir: checkpoints
+  log_dir: logs
+  save_frequency: 10
+model:
+  dropout: 0.1
+  market_embedding_dim: 32
+  max_weight: 0.2
+  min_concentration: 0.1
+  num_transformer_heads: 4
+  num_transformer_layers: 2
+  policy_hidden_dim: 64
+  stock_embedding_dim: 64
+  use_attention_pooling: true
+  value_hidden_dim: 128
+training:
+  batch_size: 64
+  buffer_size: 2048
+  clip_epsilon: 0.2
+  entropy_coef: 0.01
+  episode_length: 252
+  gae_lambda: 0.95
+  gamma: 0.99
+  learning_rate: 0.0003
+  max_grad_norm: 0.5
+  n_epochs: 10
+  n_iterations: 100
+  n_steps_per_iteration: 512
+  normalize_rewards: true
+  random_start: true
+  value_coef: 0.5

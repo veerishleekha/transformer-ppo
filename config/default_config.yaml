@@ -1,0 +1,87 @@
+# Default Configuration for Transformer + PPO Backtesting Engine
+
+# Data Configuration
+data:
+  universe: "NIFTY50"  # NIFTY50 or NIFTY100
+  start_date: "2020-01-01"
+  end_date: "2023-12-31"
+  use_sample_data: true  # Use synthetic data for demonstration
+  train_ratio: 0.7
+  lookback_window: 20
+
+# Model Configuration
+model:
+  # Stock Feature Encoder (Transformer)
+  stock_embedding_dim: 64
+  num_transformer_heads: 4
+  num_transformer_layers: 2
+  
+  # Market Context Encoder
+  market_embedding_dim: 32
+  
+  # Policy Network
+  policy_hidden_dim: 64
+  max_weight: 0.2  # Maximum weight for any single stock
+  min_concentration: 0.1
+  
+  # Value Network
+  value_hidden_dim: 128
+  use_attention_pooling: true
+  
+  # General
+  dropout: 0.1
+  
+  # AGGRESSIVE MODE - for concentrated, active bets
+  aggressive: false  # Set to true for more concentrated portfolios
+  temperature: 1.0   # Lower = more concentrated (try 0.3-0.5 for aggressive)
+
+# Training Configuration
+training:
+  # PPO Hyperparameters
+  learning_rate: 0.0003
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_epsilon: 0.2
+  value_coef: 0.5
+  entropy_coef: 0.01  # Reduce to 0.001 for more concentrated weights
+  max_grad_norm: 0.5
+  
+  # Training Loop
+  n_iterations: 100
+  n_steps_per_iteration: 512
+  n_epochs: 10
+  batch_size: 64
+  buffer_size: 2048
+  
+  # Environment
+  episode_length: 252  # One year of trading days
+  random_start: true
+  normalize_rewards: true
+
+# Environment Configuration
+environment:
+  transaction_cost: 0.001  # 0.1%
+  turnover_penalty: 0.0005
+  initial_cash: 1000000.0
+  concentration_bonus: 0.0  # Set > 0 to reward concentrated bets (try 0.001-0.01)
+  momentum_bonus: 0.0       # Set > 0 to reward momentum alignment (try 0.001-0.005)
+
+# Backtesting Configuration
+backtesting:
+  # Walk-forward settings
+  train_window: 504  # 2 years
+  test_window: 126   # 6 months
+  retrain_frequency: 63  # Retrain every quarter
+  
+  # Performance
+  risk_free_rate: 0.06  # 6% annual risk-free rate
+  periods_per_year: 252
+
+# Device Configuration
+device: "cpu"  # "cpu" or "cuda"
+
+# Logging and Checkpoints
+logging:
+  checkpoint_dir: "checkpoints"
+  log_dir: "logs"
+  save_frequency: 10  # Save every N iterations
