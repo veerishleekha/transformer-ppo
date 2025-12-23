@@ -68,7 +68,8 @@ This project implements a state-of-the-art portfolio optimization system that co
 ├── config/
 │   └── default_config.yaml      # Configuration file
 ├── notebooks/
-│   └── transformer_ppo_backtest.ipynb  # Main demonstration notebook
+│   ├── transformer_ppo_backtest.ipynb  # Main demonstration notebook
+│   └── transformer_ppo_precious_metals.ipynb  # Portfolio optimization with precious metals (GOLDBEES, SILVERBEES)
 ├── requirements.txt
 └── README.md
 ```
@@ -106,10 +107,11 @@ Then click **"Run All"** and wait ~10-20 minutes for complete results!
 
 For detailed instructions, see **[QUICKSTART.md](QUICKSTART.md)**.
 
-### Using the Jupyter Notebook
+### Using the Jupyter Notebooks
 
-The easiest way to get started is with the comprehensive demonstration notebook:
+We provide two comprehensive demonstration notebooks:
 
+#### 1. Main Transformer-PPO Backtest
 ```bash
 jupyter notebook notebooks/transformer_ppo_backtest.ipynb
 ```
@@ -121,12 +123,27 @@ jupyter notebook notebooks/transformer_ppo_backtest.ipynb
 - ✅ Automatic results export to CSV/JSON files
 - ✅ ~18 sections covering all aspects of the system
 
+#### 2. Portfolio Optimization with Precious Metals (NEW!)
+```bash
+jupyter notebook notebooks/transformer_ppo_precious_metals.ipynb
+```
+
+**Features:**
+- ✅ Dynamic NIFTY 50 stock selection (top 15 by quarterly returns)
+- ✅ Includes GOLDBEES and SILVERBEES ETFs for precious metals exposure
+- ✅ 17-asset portfolio optimization using Transformer-PPO
+- ✅ Data fetching via yfinance (no local files needed)
+- ✅ Technical indicators: ATR, MFI, RSI, momentum, volatility
+- ✅ Complete training and backtesting pipeline
+- ✅ Visualizations: portfolio value, drawdown, monthly returns heatmap, weight allocation
+
 **After running, you'll get:**
 - Training progress plots
 - Comprehensive performance metrics (Sharpe, Sortino, Calmar ratios)
 - Equity curves vs. benchmark
 - Portfolio weight analysis
-- All results saved to `results/backtest_YYYYMMDD_HHMMSS/`
+- Final asset allocation including precious metals exposure
+- All results saved to `results/` directory
 
 See **[QUICKSTART.md](QUICKSTART.md)** for detailed instructions.
 
